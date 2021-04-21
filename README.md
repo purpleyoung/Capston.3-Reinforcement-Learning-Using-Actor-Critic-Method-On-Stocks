@@ -13,7 +13,11 @@ The goal of each agent may be to survive, compete and accumulate reward, and as 
 *Researched environments, particularly Neural MMO, a massively multiagent game environment.
   * Think of a extremely basic MineCraft server, used to render terrain, agents, resources as a sort of sandbox environment.
 *Implemented rudimentary single-agent using OpenAI polecart in order to familiarize with pilepine and relevant parameters.
+*Ran through one example using polecart in order to familarize with the process and tf-agent module
 
+
+Current Step:
+*Run through second and distill process into my own implementation
 
 
 The current plan is to:
@@ -21,3 +25,7 @@ The current plan is to:
 - implement RL on a frozen-lake envirionemnt
 - tweak parameters, rewards, and actions
 - 'port' my 'game' to one of the aforementioned 'game engines'
+
+
+To Do's:
+- Collect helpers, including saving and accessing agents
