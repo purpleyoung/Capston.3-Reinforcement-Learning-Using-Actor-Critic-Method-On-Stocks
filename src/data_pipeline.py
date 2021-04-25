@@ -35,8 +35,11 @@ def API(ticker):
     
     data = pd.concat([price, macd, bbands, rsi, sma5, sma15, roc, cci, dx], axis=1)
     data = data.dropna()
-    data['ticker'] = ticker
+    # data['ticker'] = ticker
     return data
+    
+    
+
     
 
 def crossover(data):
@@ -50,6 +53,8 @@ def dropcols(data):
 def feature_names(data):
     data = data.rename(columns={'1. open':'open', '2. high':'high', '3. low':'low', '5. adjusted close':'adjc', '6. volume':'vol'})
     return data
+
+
 
 def preprocess_data(tickers):
     for ticker in tickers:
@@ -65,5 +70,9 @@ def preprocess_data(tickers):
 
 
 
+
+
+
+
 #activator
-df = pd.read_csv('data/data.csv')
+csv = preprocess_data(tickers)
