@@ -119,5 +119,4 @@ app.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    # Beanstalk expects it to be running on 8080.
-    application.run(debug=True, port=8080)
+    app.run_server(host="0.0.0.0")
