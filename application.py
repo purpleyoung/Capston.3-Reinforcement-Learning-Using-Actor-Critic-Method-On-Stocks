@@ -9,7 +9,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
-
+@app.route('/')
 app.layout = html.Div([
     html.H2('Hello World'),
     dcc.Dropdown(
@@ -27,3 +27,5 @@ def display_value(value):
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=5000, debug=True)
+
+    
