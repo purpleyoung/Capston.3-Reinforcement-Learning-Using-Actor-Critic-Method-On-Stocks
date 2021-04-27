@@ -42,29 +42,29 @@ from mpld3 import plugins
 
 
 # Init
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-application = app.server
-app.title = "ML Sock Predict"
+# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+# application = app.server
+# app.title = "ML Sock Predict"
 
 # Layout
-app.layout = html.Div(children=[
-    html.H1('Stock Visualization Dashboard'),
-    html.H4('Please enter the stock name'),
-    dcc.Input(id="input", value='', type='text'),
-    # add input for date range
-    html.Div(id="output-graph")
-])
+# app.layout = html.Div(children=[
+#     html.H1('Stock Visualization Dashboard'),
+#     html.H4('Please enter the stock name'),
+#     dcc.Input(id="input", value='', type='text'),
+#     # add input for date range
+#     html.Div(id="output-graph")
+# ])
 
 
 # User Inputs
-@app.callback(
-    Output(component_id="output-graph", component_property='children'),
-    [Input(component_id="input", component_property="value")]
-)
-
-def update_value(input_data):
+# @app.callback(
+#     Output(component_id="output-graph", component_property='children'),
+#     [Input(component_id="input", component_property="value")]
+# )
+# 
+# def update_value(input_data):
     # model = A2C.load("a2c_cartpole")
     # df = preprocessing(ticker=input_data)
     # env = gym.make('stocks-v0', df=df, frame_bound=(90,110), window_size=5)
@@ -85,13 +85,39 @@ def update_value(input_data):
     # net_worth = pd.Series(env.history['total_profit'], index=df.index[start_index+1:end_index])
     # returns = net_worth.pct_change().iloc[1:]
     # html.Img()
-    return 5
+#     return 5
 
     
     # return dcc.Graph(id="demo", figure={'data': [z], 'layout': {'title': input_data}})
 
     #return dcc.Graph(id="demo", figure=mpld3.show())
 
-########### Run the app
+
+app = dash.Dash()
+# Beanstalk looks for application by default, if this isn't set you will get a WSGI error.
+application = app.server
+
+app.layout = html.Div(children=[
+    html.H1(children='Hello Dash'),
+
+    html.Div(children='''
+        This is Dash running on Elastic Beanstalk.
+    '''),
+
+    dcc.Graph(
+        id='example-graph',
+        figure={
+            'data': [
+                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
+                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
+            ],
+            'layout': {
+                'title': 'Dash Data Visualization'
+            }
+        }
+    )
+])
+
 if __name__ == '__main__':
-    application.run(debug=True, port=8000)
+    # Beanstalk expects it to be running on 8080.
+    application.run(debug=True, port=8080)
