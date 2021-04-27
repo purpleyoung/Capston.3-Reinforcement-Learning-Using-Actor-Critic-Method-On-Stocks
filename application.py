@@ -2,39 +2,39 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import datetime
-
-
-import pandas_datareader.data as web
-
-
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import mpld3
-from mpld3 import plugins
-
-# from src.data_pipeline import preprocess_data
-
-# Gym
-import gym
-import gym_anytrading
-
-# Stable baselines 1.15
-#TODO look at adding the rest if/as needed
-from stable_baselines.common.vec_env import DummyVecEnv
-from stable_baselines import A2C, SAC, ACER, PPO2, TD3
-# from stable_baselines import DDPG, GAIL
-
-# tf 
-import tensorflow as tf
+# import datetime
+# 
+# 
+# import pandas_datareader.data as web
+# 
+# 
+# import matplotlib.pyplot as plt
+# import numpy as np
+# import pandas as pd
+# import mpld3
+# from mpld3 import plugins
+# 
+# # from src.data_pipeline import preprocess_data
+# 
+# # Gym
+# import gym
+# import gym_anytrading
+# 
+# # Stable baselines 1.15
+# #TODO look at adding the rest if/as needed
+# from stable_baselines.common.vec_env import DummyVecEnv
+# from stable_baselines import A2C, SAC, ACER, PPO2, TD3
+# # from stable_baselines import DDPG, GAIL
+# 
+# # tf 
+# import tensorflow as tf
 
 # core
-import numpy as np
-import pandas as pd
-import quantstats as qs
-
-from mpld3 import plugins
+#import numpy as np
+#import pandas as pd
+#import quantstats as qs
+#
+# from mpld3 import plugins
 
 # print a nice greeting.
 def say_hello(username = "World"):
