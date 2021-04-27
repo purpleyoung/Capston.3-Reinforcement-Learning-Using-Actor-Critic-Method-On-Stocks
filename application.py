@@ -1,31 +1,29 @@
+import os
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-app.layout = html.Div([
-    html.H6("Change the value in the text box to see callbacks in action!"),
-    html.Div(["Input: ",
-              dcc.Input(id='my-input', value='initial value', type='text')]),
-    html.Br(),
-    html.Div(id='my-output'),
+server = app.server
 
+app.layout = html.Div([
+    html.H2('Hello World'),
+    dcc.Dropdown(
+        id='dropdown',
+        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+        value='LA'
+    ),
+    html.Div(id='display-value')
 ])
 
-
-@app.callback(
-    Output(component_id='my-output', component_property='children'),
-    Input(component_id='my-input', component_property='value')
-)
-def update_output_div(input_value):
-    return 'Output: {}'.format(input_value)
-
-
- # your stuff ... 
+@app.callback(dash.dependencies.Output('display-value', 'children'),
+              [dash.dependencies.Input('dropdown', 'value')])
+def display_value(value):
+    return 'You have selected "{}"'.format(value)
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    app.run_server(debug=True)
