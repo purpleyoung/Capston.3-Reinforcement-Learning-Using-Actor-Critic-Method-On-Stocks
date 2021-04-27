@@ -1,4 +1,4 @@
-from flask import Flask
+import Flask
 
 # print a nice greeting.
 def say_hello(username = "World"):
