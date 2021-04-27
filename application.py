@@ -1,29 +1,9 @@
-import os
-
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-application = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-server = application.server
-
-application.layout = html.Div([
-    html.H2('Hello World'),
-    dcc.Dropdown(
-        id='dropdown',
-        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
-        value='LA'
-    ),
-    html.Div(id='display-value')
-])
-
-@application.callback(dash.dependencies.Output('display-value', 'children'),
-              [dash.dependencies.Input('dropdown', 'value')])
-def display_value(value):
-    return 'You have selected "{}"'.format(value)
-
+app = dash.Dash(__name__)
+application = app.server
+.
+. # your stuff ... 
+.
 if __name__ == '__main__':
-    application.run_server(debug=True)
+    application.run(debug=True)
