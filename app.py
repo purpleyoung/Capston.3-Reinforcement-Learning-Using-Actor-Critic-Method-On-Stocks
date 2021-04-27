@@ -13,9 +13,8 @@ import numpy as np
 import pandas as pd
 import mpld3
 from mpld3 import plugins
-np.random.seed(9615)
 
-from src.data_pipeline import preprocess_data
+# from src.data_pipeline import preprocess_data
 
 # Gym
 import gym
@@ -37,14 +36,19 @@ import quantstats as qs
 
 from mpld3 import plugins
 
-image_directory = './'
-list_of_images = [os.path.basename(x) for x in glob.glob('{}*.png'.format(image_directory))]
-static_image_route = '/static/'
+# image_directory = './'
+# list_of_images = [os.path.basename(x) for x in glob.glob('{}*.png'.format(image_directory))]
+# static_image_route = '/static/'
 
+
+# Init
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+application = app.server
+app.title = "ML Sock Predict"
 
 # Layout
-app = dash.Dash()
-app.title = "ML Sock Predict"
 app.layout = html.Div(children=[
     html.H1('Stock Visualization Dashboard'),
     html.H4('Please enter the stock name'),
@@ -61,36 +65,33 @@ app.layout = html.Div(children=[
 )
 
 def update_value(input_data):
-    model = A2C.load("a2c_cartpole")
-    df = preprocessing(ticker=input_data)
-    env = gym.make('stocks-v0', df=df, frame_bound=(90,110), window_size=5)
+    # model = A2C.load("a2c_cartpole")
+    # df = preprocessing(ticker=input_data)
+    # env = gym.make('stocks-v0', df=df, frame_bound=(90,110), window_size=5)
 
-    obs = env.reset()
-    while True: 
-        obs = obs[np.newaxis, ...]
-        action, _states = model.predict(obs)
-        obs, rewards, done, info = env.step(action)    
-        if done:
-            #print("info", info)
-            break
-    qs.extend_pandas()
-    plt.figure(figsize=(16, 6))
-    env.render_all()
-    plt.savefig('hope.png')
+    # while True: 
+    # obs = env.reset()
+    #     action, _states = model.predict(obs)
+    #     obs = obs[np.newaxis, ...]
+    #     if done:
+    #     obs, rewards, done, info = env.step(action)    
+    #         break
+    #         #print("info", info)
+    # plt.figure(figsize=(16, 6))
+    # qs.extend_pandas()
+    # plt.savefig('hope.png')
+    # env.render_all()
 
     # net_worth = pd.Series(env.history['total_profit'], index=df.index[start_index+1:end_index])
     # returns = net_worth.pct_change().iloc[1:]
-    
-    return html.Img()
+    # html.Img()
+    return 5
 
     
-    return dcc.Graph(id="demo", figure={'data': [z], 'layout': {'title': input_data}})
+    # return dcc.Graph(id="demo", figure={'data': [z], 'layout': {'title': input_data}})
 
     #return dcc.Graph(id="demo", figure=mpld3.show())
 
-
-if __name__ == "__main__":
-    app.run_server(host='0.0.0.0', port=8000, debug=True)
-
-    
-    
+########### Run the app
+if __name__ == '__main__':
+    application.run(debug=True, port=8080)

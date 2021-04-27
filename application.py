@@ -1,4 +1,4 @@
-import Flask
+from flask import Flask
 
 # print a nice greeting.
 def say_hello(username = "World"):
@@ -16,6 +16,7 @@ footer_text = '</body>\n</html>'
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
+app = application
 
 # add a rule for the index page.
 application.add_url_rule('/', 'index', (lambda: header_text +
