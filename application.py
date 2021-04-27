@@ -94,4 +94,4 @@ def update_value(input_data):
 
 ########### Run the app
 if __name__ == '__main__':
-    application.run(debug=True, port=5000)
+    application.run(debug=True, port=8000)
