@@ -1,30 +1,33 @@
 import dash
+import dash_auth
 import dash_core_components as dcc
-import dash_html_components as html########### Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-application = app.server
-app.title='Dash on AWS EB!'########### Set up the layout
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
-    html.Div(children='''
-            This is Dash running on Elastic Beanstalk.
-        '''),
-    dcc.Graph(
-            id='example-graph',
-            figure={
-                'data': [
-                    {'x': ['left', 'center', 'right'], 'y': [3,7,6], 'type': 'bar', 'name': 'category 1'},
-                    {'x': ['left', 'center', 'right'], 'y': [4,2,5], 'type': 'bar', 'name': 'category 2'},
-                ],
-                'layout': {
-                    'plot_bgcolor': 'lightgray',
-                    'title': 'Graph Title',
-                    'xaxis':{'title':'x-axis label'},
-                    'yaxis':{'title':'y-axis label'},
-                },
-            }
-        )
-])########### Run the app
+import dash_html_components as html
+from dash.dependencies import Input, Output
+
+USERNAME_PASSWORD_PAIRS = [
+    ['JamesBond', '007'],['LouisArmstrong', 'satchmo']
+]
+
+app = dash.Dash()
+auth = dash_auth.BasicAuth(app,USERNAME_PASSWORD_PAIRS)
+server = app.server
+
+app.layout = html.Div([
+    dcc.RangeSlider(
+        id='range-slider',
+        min=-5,
+        max=6,
+        marks={i:str(i) for i in range(-5, 7)},
+        value=[-3, 4]
+    ),
+    html.H1(id='product')  # this is the output
+], style={'width':'50%'})
+
+@app.callback(
+    Output('product', 'children'),
+    [Input('range-slider', 'value')])
+def update_value(value_list):
+    return value_list[0]*value_list[1]
+
 if __name__ == '__main__':
-    application.run(debug=True, port=8080)
+    app.run_server(debug = True)
