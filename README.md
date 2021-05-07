@@ -1,9 +1,7 @@
 The goal of this project is to implement and evaluate the performance of the actor-critic method (A2C). The evaluation will use the Anytrade, a 3rd party OpenAI ML gym enviornment, which provides an action space of buy, hold, and sell as well as some scoring functionality. For visual representation of the model's performance I use quantstats, which takes in the a backtest environement and returns a robust trading profile from which specific charts or statistics can be called.
 
-[GitHub](http://github.com)
+[StableBaselines](https://stable-baselines.readthedocs.io/en/master/index.html)
 
-http://www.github.com/
-https://stable-baselines.readthedocs.io/en/master/index.html
 
 Reinforcement learning thrives on massive amounts of data and for any practcal use requires the discovery and implementation of algorithms capable of efficiently developing action policies within processing and even data constraints. In the case of A2C, the model's architecture provides for steep optimizations in computing efficiency, and optimal policy discovery. In fact, unlike other exlporations of cumputational optimization like using GPUs or in the case of A3C using multiple environmnets, A2C uses multiple instances of the same learning agent in a single enviornment, each progressing through the same series of states and relaying what they've learned to the policy netowrk which will only periodically update all agents with the average of weighted learning.
 
