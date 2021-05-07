@@ -1,4 +1,4 @@
-# Reinforcement Learning: The Actor-Critic Method On Stock
+# Reinforcement Learning: Using Actor-Critic Method On Stocks
 
 
 The goal of this project is to implement and evaluate the performance of the actor-critic method (A2C). The evaluation will use the Anytrade, a 3rd party OpenAI ML gym environment, which provides an action space of buy, hold, and sell as well as some scoring functionality. The A2C model will be drawn from the [StableBaselines](https://stable-baselines.readthedocs.io/en/master/index.html) library. For a visual representation of the model's performance, I use quantstats, which takes in the backtest environment and returns a robust trading profile from which specific charts or statistics can be called.
