@@ -1,5 +1,7 @@
 The goal of this project is to implement and evaluate the performance of the actor-critic method (A2C). The evaluation will use the Anytrade, a 3rd party OpenAI ML gym enviornment, which provides an action space of buy, hold, and sell as well as some scoring functionality. For visual representation of the model's performance I use quantstats, which takes in the a backtest environement and returns a robust trading profile from which specific charts or statistics can be called.
 
+[GitHub](http://github.com)
+
 http://www.github.com/
 https://stable-baselines.readthedocs.io/en/master/index.html
 
